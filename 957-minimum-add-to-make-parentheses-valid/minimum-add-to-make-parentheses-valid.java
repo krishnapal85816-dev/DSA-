@@ -3,20 +3,17 @@ class Solution {
         Stack<Character> st = new Stack<>();
         int count =0;
 
-    for(int i=0;i<s.length();i++){
-        char ch = s.charAt(i);
-
-        if(ch=='('){
-            st.push(ch);
-        }
-        else if( st.size()>0 && st.peek()=='('){
-            st.pop();
-        }
-        else{
+    for( char ch : s.toCharArray()){
+        if(ch == '(')st.push(ch);
+        else if (st.isEmpty()){
             count++;
         }
+        else{
+            st.pop();
+        }
     }
-    return (st.size() + count);
-        
+    return st.size()+count;
     }
 }
+
+        
