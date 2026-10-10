@@ -13,8 +13,8 @@ class Solution {
                 return t.charAt(i);
             }
         }
-        char dead = t.charAt(0);
-        return dead;
+        
+        return ' ';
 
         
     }
