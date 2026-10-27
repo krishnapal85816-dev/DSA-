@@ -9,12 +9,11 @@ class Solution {
         reverse(nums, k, n - 1);
     }
 
-    public void reverse(int[] nums, int left, int right) {
+    private void reverse(int[] nums, int left, int right) {
         while (left < right) {
             int temp = nums[left];
             nums[left] = nums[right];
             nums[right] = temp;
-
             left++;
             right--;
         }
