@@ -2,7 +2,8 @@
 class Solution {
     public String[] createGrid(int m, int n, int k) {
         String[] pattern;
-        
+        int r, c;
+
         if (k == 1) {
             pattern = new String[]{"."};
         } 
@@ -20,19 +21,19 @@ class Solution {
             }
         } 
         else {
-            if (m >= 3 && n >= 3) {
-                pattern = new String[]{"..#", "...", "#.."};
-            } else if (m >= 2 && n >= 4) {
+            if (m >= 2 && n >= 4) {
                 pattern = new String[]{"....", "...."};
             } else if (m >= 4 && n >= 2) {
                 pattern = new String[]{"..", "..", "..", ".."};
+            } else if (m >= 3 && n >= 3) {
+                pattern = new String[]{"..#", "...", "#.."};
             } else {
                 return new String[0];
             }
         }
 
-        int r = pattern.length;
-        int c = pattern[0].length();
+        r = pattern.length;
+        c = pattern[0].length();
 
         char[][] grid = new char[m][n];
 
@@ -48,12 +49,12 @@ class Solution {
             }
         }
 
-        for (int i = r - 1; i < m; i++) {
-            grid[i][c - 1] = '.';
+        for (int j = c; j < n; j++) {
+            grid[r - 1][j] = '.';
         }
 
-        for (int j = c - 1; j < n; j++) {
-            grid[m - 1][j] = '.';
+        for (int i = r; i < m; i++) {
+            grid[i][n - 1] = '.';
         }
 
         String[] ans = new String[m];
