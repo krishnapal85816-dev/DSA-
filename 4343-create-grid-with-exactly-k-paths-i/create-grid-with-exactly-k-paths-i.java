@@ -1,39 +1,36 @@
 
 class Solution {
     public String[] createGrid(int m, int n, int k) {
-        String[] pattern;
         int r, c;
+        String[] pattern;
 
         if (k == 1) {
+            r = 1;
+            c = 1;
             pattern = new String[]{"."};
-        } 
-        else if (k == 2) {
-            if (m < 2 || n < 2) return new String[0];
-            pattern = new String[]{"..", ".."};
-        } 
-        else if (k == 3) {
-            if (m >= 2 && n >= 3) {
-                pattern = new String[]{"...", "..."};
-            } else if (m >= 3 && n >= 2) {
-                pattern = new String[]{"..", "..", ".."};
-            } else {
-                return new String[0];
-            }
-        } 
-        else {
-            if (m >= 2 && n >= 4) {
-                pattern = new String[]{"....", "...."};
-            } else if (m >= 4 && n >= 2) {
-                pattern = new String[]{"..", "..", "..", ".."};
-            } else if (m >= 3 && n >= 3) {
-                pattern = new String[]{"..#", "...", "#.."};
-            } else {
-                return new String[0];
-            }
-        }
+        } else if (m >= 2 && n >= k) {
+            r = 2;
+            c = k;
+            pattern = new String[r];
 
-        r = pattern.length;
-        c = pattern[0].length();
+            for (int i = 0; i < r; i++) {
+                pattern[i] = ".".repeat(c);
+            }
+        } else if (m >= k && n >= 2) {
+            r = k;
+            c = 2;
+            pattern = new String[r];
+
+            for (int i = 0; i < r; i++) {
+                pattern[i] = "..";
+            }
+        } else if (k == 4 && m >= 3 && n >= 3) {
+            r = 3;
+            c = 3;
+            pattern = new String[]{"..#", "...", "#.."};
+        } else {
+            return new String[0];
+        }
 
         char[][] grid = new char[m][n];
 
