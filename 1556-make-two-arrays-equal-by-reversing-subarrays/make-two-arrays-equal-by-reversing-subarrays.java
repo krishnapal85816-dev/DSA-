@@ -1,26 +1,17 @@
-
-import java.util.*;
-
 class Solution {
     public boolean canBeEqual(int[] target, int[] arr) {
-        HashMap<Integer, Integer> map = new HashMap<>();
+        int[] freq = new int[1001];
 
         for (int num : target) {
-            map.put(num, map.getOrDefault(num, 0) + 1);
+            freq[num]++;
         }
 
         for (int num : arr) {
-            if (!map.containsKey(num)) {
+            if (--freq[num] < 0) {
                 return false;
-            }
-
-            map.put(num, map.get(num) - 1);
-
-            if (map.get(num) == 0) {
-                map.remove(num);
             }
         }
 
-        return map.isEmpty();
+        return true;
     }
 }
